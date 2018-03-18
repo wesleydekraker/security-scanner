@@ -10,19 +10,45 @@ public class UrlResolverTest
 {
     @Test
     public void testGetAbsoluteUrl() throws MalformedURLException {
-        SimpleUrl result = UrlResolver.getAbsoluteUrl(new SimpleUrl("http://example.com/"), new SimpleUrl("index.html"));
-        assertEquals("http://example.com/index.html", result.toString());
+        assertGetAbsoluteUrl(
+                "http://example.com/",
+                "index.html",
+                "http://example.com/index.html"
+        );
 
-        result = UrlResolver.getAbsoluteUrl(new SimpleUrl("http://example.com/tokyo/map.html"), new SimpleUrl("index.html"));
-        assertEquals("http://example.com/tokyo/index.html", result.toString());
+        assertGetAbsoluteUrl(
+                "http://example.com/tokyo/map.html",
+                "index.html",
+                "http://example.com/tokyo/index.html"
+        );
 
-        result = UrlResolver.getAbsoluteUrl(new SimpleUrl("http://example.com/tokyo/index.html"), new SimpleUrl("/index.html"));
-        assertEquals("http://example.com/index.html", result.toString());
+        assertGetAbsoluteUrl(
+                "http://example.com/tokyo/index.html",
+                "/index.html",
+                "http://example.com/index.html"
+        );
 
-        result = UrlResolver.getAbsoluteUrl(new SimpleUrl("http://example.com/tokyo/index.html"), new SimpleUrl("//example.com/index.html"));
-        assertEquals("http://example.com/index.html", result.toString());
+        assertGetAbsoluteUrl(
+                "http://example.com/",
+                "index.html",
+                "http://example.com/index.html"
+        );
 
-        result = UrlResolver.getAbsoluteUrl(new SimpleUrl("http://example.com/tokyo/index.html"), new SimpleUrl("http://example.com/index.html"));
-        assertEquals("http://example.com/index.html", result.toString());
+        assertGetAbsoluteUrl(
+                "http://example.com/tokyo/index.html",
+                "//example.com/index.html",
+                "http://example.com/index.html"
+        );
+
+        assertGetAbsoluteUrl(
+                "http://example.com/tokyo/index.html",
+                "http://example.com/index.html",
+                "http://example.com/index.html"
+        );
+    }
+
+    public void assertGetAbsoluteUrl(String current, String target, String expected) throws MalformedURLException {
+        SimpleUrl result = UrlResolver.getAbsoluteUrl(new SimpleUrl(current), new SimpleUrl(target));
+        assertEquals(new SimpleUrl(expected), result);
     }
 }
