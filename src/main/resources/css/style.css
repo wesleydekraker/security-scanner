@@ -1,0 +1,49 @@
+body {
+    margin: 0 auto;
+    width: 80%;
+    min-width: 500px;
+}
+
+.container {
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 20px;
+    color: white;
+    background-color: darkslateblue;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    clear: left;
+    margin: 0;
+    padding: 1em;
+    border-bottom: 1px solid gray;
+}
+
+nav ul {
+    clear: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: darkslateblue;
+    color: white;
+    text-decoration: none;
+}
+
+article {
+    padding: 20px;
+}
