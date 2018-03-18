@@ -29,12 +29,6 @@ public class UrlResolverTest
         );
 
         assertGetAbsoluteUrl(
-                "http://example.com/",
-                "index.html",
-                "http://example.com/index.html"
-        );
-
-        assertGetAbsoluteUrl(
                 "http://example.com/tokyo/index.html",
                 "//example.com/index.html",
                 "http://example.com/index.html"
