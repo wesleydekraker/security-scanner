@@ -53,10 +53,6 @@ public class SimpleUrl extends ValueObject {
         return url.startsWith("//") || url.contains("://");
     }
 
-    private boolean isAbsolutePath(String path) {
-        return path.startsWith("/");
-    }
-
     private String stripProtocol(String url) {
         if (url.startsWith("//")) {
             url = url.substring(2);
@@ -85,8 +81,17 @@ public class SimpleUrl extends ValueObject {
         return url.substring(pathIndex);
     }
 
+    private boolean isAbsolutePath(String path) {
+        return path.startsWith("/");
+    }
+
     private String stripLeadingSlash(String path) {
         return path.substring(1);
+    }
+
+    public String getBasePath() {
+        int i = path.lastIndexOf('/');
+        return path.substring(0, i + 1);
     }
 
     public String getProtocol() {
@@ -107,11 +112,6 @@ public class SimpleUrl extends ValueObject {
 
     public boolean isAbsolutePath() {
         return absolutePath;
-    }
-
-    public String getBasePath() {
-        int i = path.lastIndexOf('/');
-        return path.substring(0, i + 1);
     }
 
     @Override
