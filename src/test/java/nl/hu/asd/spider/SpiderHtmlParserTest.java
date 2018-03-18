@@ -15,7 +15,7 @@ import java.util.List;
 public class SpiderHtmlParserTest
 {
     @Test
-    public void testGetLinks() throws HttpClientException {
+    public void testGetUrls() throws HttpClientException {
         SimpleUrl url = new SimpleUrl("http://example.com/index.html");
 
         IHttpClient httpClient = new HttpClientStub();
