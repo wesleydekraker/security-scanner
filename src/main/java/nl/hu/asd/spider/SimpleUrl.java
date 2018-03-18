@@ -23,6 +23,10 @@ public class SimpleUrl extends ValueObject {
 
         String path = url;
 
+        if (this.absoluteUrl && path.isEmpty()) {
+            path = "/";
+        }
+
         this.absolutePath = isAbsolutePath(path);
 
         if (isAbsolutePath()) {
