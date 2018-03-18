@@ -9,6 +9,7 @@ import nl.hu.asd.httpclient.SimpleHttpRes;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SpiderHtmlParserTest
@@ -19,13 +20,16 @@ public class SpiderHtmlParserTest
 
         IHttpClient httpClient = new HttpClientStub();
         SimpleHttpRes response = httpClient.connect(url.toString());
-        
+
         List<SimpleUrl> links = SpiderHtmlParser.getUrls(url, response.getBody());
 
-        for (SimpleUrl link : links) {
-            System.out.println(link);
-        }
+        final List<SimpleUrl> expectedLinks = Arrays.asList(
+            new SimpleUrl("http://example.com/index.html"),
+            new SimpleUrl("http://example.com/london/index.html"),
+            new SimpleUrl("http://example.com/paris/index.html"),
+            new SimpleUrl("http://example.com/tokyo/index.html")
+        );
 
-        assertEquals(4, links.size());
+        assertEquals(expectedLinks, links);
     }
 }
