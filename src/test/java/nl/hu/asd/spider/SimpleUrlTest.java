@@ -2,16 +2,15 @@ package nl.hu.asd.spider;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class SimpleUrlTest
 {
     @Test
-    public void testConstructor() {
-        SimpleUrl url = new SimpleUrl("//google.com");
-        System.out.println(url.getProtocol());
-        System.out.println(url.getHost());
-        System.out.println(url.getPath());
-        System.out.println(url.isAbsoluteUrl());
-        System.out.println(url.isAbsolutePath());
-        System.out.println(url.toString());
+    public void testEquals() {
+        SimpleUrl url1 = new SimpleUrl("http://google.com");
+        SimpleUrl url2 = new SimpleUrl("http://google.com/");
+
+        assertEquals(url1, url2);
     }
 }
