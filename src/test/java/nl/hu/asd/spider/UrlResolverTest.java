@@ -1,7 +1,5 @@
 package nl.hu.asd.spider;
 
-import nl.hu.asd.spider.SimpleUrl;
-import nl.hu.asd.spider.UrlResolver;
 import org.junit.Test;
 
 import java.net.MalformedURLException;

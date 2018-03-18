@@ -1,8 +1,5 @@
 package nl.hu.asd.httpclient;
 
-import nl.hu.asd.httpclient.HttpClientException;
-import nl.hu.asd.httpclient.HttpClientStub;
-import nl.hu.asd.httpclient.SimpleHttpRes;
 import org.junit.Test;
 
 public class HttpClientStubTest

@@ -1,6 +1,5 @@
 package nl.hu.asd.spider;
 
-import nl.hu.asd.httpclient.HttpClient;
 import nl.hu.asd.httpclient.HttpClientException;
 import nl.hu.asd.httpclient.IHttpClient;
 import nl.hu.asd.httpclient.SimpleHttpRes;

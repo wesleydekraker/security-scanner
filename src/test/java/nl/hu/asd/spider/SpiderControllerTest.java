@@ -1,12 +1,9 @@
 package nl.hu.asd.spider;
 
 import nl.hu.asd.httpclient.HttpClientStub;
-import nl.hu.asd.spider.SpiderController;
 import org.junit.Test;
 
 import java.net.MalformedURLException;
-
-import static org.junit.Assert.assertEquals;
 
 public class SpiderControllerTest
 {

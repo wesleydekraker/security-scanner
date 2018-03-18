@@ -1,6 +1,5 @@
 package nl.hu.asd.spider;
 
-import nl.hu.asd.spider.SimpleUrl;
 import org.junit.Test;
 
 public class SimpleUrlTest
