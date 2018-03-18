@@ -23,13 +23,16 @@ public class Spider extends Entity {
         maxDepth = -1;
     }
 
-    public void start(String startUrl) throws MalformedURLException {
-        SimpleUrl simpleUrl = new SimpleUrl(startUrl);
+    public void addSeed(String url) throws MalformedURLException {
+        SimpleUrl simpleUrl = new SimpleUrl(url);
         if (!simpleUrl.isAbsoluteUrl() || simpleUrl.getProtocol() == null) {
             throw new MalformedURLException();
         }
 
         addToQueue(simpleUrl, 0);
+    }
+
+    public void start() {
         while (!queue.isEmpty()) {
             QueuedUrl current = queue.poll();
             if (maxDepth != -1 && current.getDepth() >= maxDepth) {

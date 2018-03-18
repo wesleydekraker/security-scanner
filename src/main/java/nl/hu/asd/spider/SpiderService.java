@@ -12,8 +12,10 @@ public class SpiderService extends Service {
         spider.setHttpClient(new HttpClient());
         spider.setMaxChildren(maxChildren);
         spider.setMaxDepth(maxDepth);
+        
+        spider.addSeed(startUrl);
 
-        spider.start(startUrl);
+        spider.start();
         return spider.getVisitedUrls();
     }
 
