@@ -1,9 +1,13 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.httpclient.IHttpClient;
+
 import java.net.MalformedURLException;
 import java.util.*;
 
 public class SpiderController {
+    private IHttpClient httpClient;
+
     private Queue<QueuedUrl> queue;
     private Set<SimpleUrl> visited;
 
@@ -31,7 +35,7 @@ public class SpiderController {
                 break;
             }
 
-            SpiderTask spiderTask = new SpiderTask();
+            SpiderTask spiderTask = new SpiderTask(httpClient);
             spiderTask.start(current.getUrl());
             visited.add(current.getUrl());
 
@@ -66,6 +70,10 @@ public class SpiderController {
 
     public Set<SimpleUrl> getVisitedUrls() {
         return visited;
+    }
+
+    public void setHttpClient(IHttpClient httpClient) {
+        this.httpClient = httpClient;
     }
 
     public void setMaxChildren(int maxChildren) {

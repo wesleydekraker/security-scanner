@@ -1,4 +1,4 @@
-package nl.hu.asd;
+package nl.hu.asd.spider;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,7 @@ import nl.hu.asd.httpclient.HttpClientException;
 import nl.hu.asd.httpclient.HttpClientStub;
 import nl.hu.asd.httpclient.IHttpClient;
 import nl.hu.asd.httpclient.SimpleHttpRes;
-import nl.hu.asd.spider.SimpleUrl;
-import nl.hu.asd.spider.SpiderHtmlParser;
+
 import org.junit.Test;
 
 import java.util.List;

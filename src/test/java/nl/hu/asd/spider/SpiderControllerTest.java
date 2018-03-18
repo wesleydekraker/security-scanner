@@ -1,5 +1,6 @@
-package nl.hu.asd;
+package nl.hu.asd.spider;
 
+import nl.hu.asd.httpclient.HttpClientStub;
 import nl.hu.asd.spider.SpiderController;
 import org.junit.Test;
 
@@ -12,6 +13,7 @@ public class SpiderControllerTest
     @Test
     public void testConstructor() throws MalformedURLException {
         SpiderController spiderController = new SpiderController();
+        spiderController.setHttpClient(new HttpClientStub());
         spiderController.setMaxChildren(4);
         spiderController.setMaxDepth(5);
 

@@ -1,4 +1,4 @@
-package nl.hu.asd;
+package nl.hu.asd.httpclient;
 
 import nl.hu.asd.httpclient.HttpClientException;
 import nl.hu.asd.httpclient.HttpClientStub;
