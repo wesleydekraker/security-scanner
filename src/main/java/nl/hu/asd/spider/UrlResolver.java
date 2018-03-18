@@ -1,8 +1,10 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.Service;
+
 import java.net.MalformedURLException;
 
-public class UrlResolver {
+public class UrlResolver extends Service {
     private UrlResolver() { }
 
     public static SimpleUrl getAbsoluteUrl(SimpleUrl currentUrl, SimpleUrl targetUrl) throws MalformedURLException {

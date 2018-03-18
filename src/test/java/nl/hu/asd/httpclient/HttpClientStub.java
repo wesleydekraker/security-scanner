@@ -1,12 +1,13 @@
 package nl.hu.asd.httpclient;
 
+import nl.hu.asd.Service;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class HttpClientStub implements IHttpClient {
+public class HttpClientStub extends Service implements IHttpClient {
     private String baseUrl = "http://example.com/";
 
     public SimpleHttpRes connect(String url) throws HttpClientException {

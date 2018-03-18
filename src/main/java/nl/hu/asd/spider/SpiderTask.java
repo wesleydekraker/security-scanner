@@ -1,12 +1,13 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.Entity;
 import nl.hu.asd.httpclient.HttpClientException;
 import nl.hu.asd.httpclient.IHttpClient;
 import nl.hu.asd.httpclient.SimpleHttpRes;
 
 import java.util.List;
 
-public class SpiderTask {
+public class SpiderTask extends Entity {
     private IHttpClient httpClient;
 
     private List<SimpleUrl> foundUrls;

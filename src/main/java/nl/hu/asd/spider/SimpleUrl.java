@@ -1,9 +1,11 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.ValueObject;
+
 import java.net.MalformedURLException;
 import java.util.Objects;
 
-public class SimpleUrl {
+public class SimpleUrl extends ValueObject {
     private String protocol;
     private String host;
     private String path;

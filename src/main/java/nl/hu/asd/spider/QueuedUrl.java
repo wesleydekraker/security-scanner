@@ -1,6 +1,8 @@
 package nl.hu.asd.spider;
 
-public class QueuedUrl {
+import nl.hu.asd.ValueObject;
+
+public class QueuedUrl extends ValueObject {
     private SimpleUrl url;
     private int depth;
 

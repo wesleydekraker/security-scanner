@@ -1,11 +1,12 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.Entity;
 import nl.hu.asd.httpclient.IHttpClient;
 
 import java.net.MalformedURLException;
 import java.util.*;
 
-public class Spider {
+public class Spider extends Entity {
     private IHttpClient httpClient;
 
     private Queue<QueuedUrl> queue;

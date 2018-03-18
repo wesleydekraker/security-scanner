@@ -3,12 +3,13 @@ package nl.hu.asd.spider;
 import net.htmlparser.jericho.Source;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.HTMLElementName;
+import nl.hu.asd.Service;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpiderHtmlParser {
+public class SpiderHtmlParser extends Service {
     public static List<SimpleUrl> getUrls(SimpleUrl currentUrl, String messageBody) {
         List<SimpleUrl> urls = new ArrayList<>();
 

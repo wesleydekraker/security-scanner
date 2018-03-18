@@ -1,5 +1,6 @@
 package nl.hu.asd.httpclient;
 
+import nl.hu.asd.Service;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -9,7 +10,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class HttpClient implements IHttpClient {
+public class HttpClient extends Service implements IHttpClient {
     public SimpleHttpRes connect(String url) throws HttpClientException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);

@@ -1,6 +1,8 @@
 package nl.hu.asd.httpclient;
 
-public class SimpleHttpRes {
+import nl.hu.asd.ValueObject;
+
+public class SimpleHttpRes extends ValueObject {
     private int statusCode;
     private String body;
 
