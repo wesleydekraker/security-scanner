@@ -60,13 +60,27 @@ public class Spider extends Entity {
     }
 
     private boolean addToQueue(SimpleUrl url, int depth) {
-        if (!queue.contains(url) && !visited.contains(url)) {
+        if (isNewUrl(url)) {
             QueuedUrl newUrl = new QueuedUrl(url, depth);
             queue.add(newUrl);
             return true;
         }
 
         return false;
+    }
+
+    private boolean isNewUrl(SimpleUrl url) {
+        if (visited.contains(url)) {
+            return false;
+        }
+
+        for (QueuedUrl queuedUrl : this.queue) {
+            if (queuedUrl.getUrl().equals(url)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public Set<SimpleUrl> getVisitedUrls() {
