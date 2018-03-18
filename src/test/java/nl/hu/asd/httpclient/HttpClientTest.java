@@ -2,15 +2,17 @@
 //
 //import org.junit.Test;
 //
-//public class HttpClientTest
-//{
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertTrue;
+//
+//public class HttpClientTest {
 //    @Test
 //    public void testGet() throws HttpClientException {
 //        HttpClient httpClient = new HttpClient();
 //
-//        SimpleHttpRes response = httpClient.connect("http://example.com/");
-//
-//        System.out.println(response.getStatusCode());
-//        System.out.println(response.getBody());
+//        SimpleHttpRes response = httpClient.connect("http://example.com/tokyo/map.html");
+//        
+//        assertEquals(200, response.getStatusCode());
+//        assertTrue(response.getBody().contains("Map of Tokyo"));
 //    }
 //}
