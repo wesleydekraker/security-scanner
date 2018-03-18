@@ -21,15 +21,15 @@ public class SpiderHtmlParserTest
         IHttpClient httpClient = new HttpClientStub();
         SimpleHttpRes response = httpClient.connect(url.toString());
 
-        List<SimpleUrl> links = SpiderHtmlParser.getUrls(url, response.getBody());
+        List<SimpleUrl> urls = SpiderHtmlParser.getUrls(url, response.getBody());
 
-        final List<SimpleUrl> expectedLinks = Arrays.asList(
+        List<SimpleUrl> expectedUrls = Arrays.asList(
             new SimpleUrl("http://example.com/index.html"),
             new SimpleUrl("http://example.com/london/index.html"),
             new SimpleUrl("http://example.com/paris/index.html"),
             new SimpleUrl("http://example.com/tokyo/index.html")
         );
 
-        assertEquals(expectedLinks, links);
+        assertEquals(expectedUrls, urls);
     }
 }
