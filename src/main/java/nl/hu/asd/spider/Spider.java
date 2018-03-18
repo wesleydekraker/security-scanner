@@ -5,7 +5,7 @@ import nl.hu.asd.httpclient.IHttpClient;
 import java.net.MalformedURLException;
 import java.util.*;
 
-public class SpiderController {
+public class Spider {
     private IHttpClient httpClient;
 
     private Queue<QueuedUrl> queue;
@@ -14,7 +14,7 @@ public class SpiderController {
     private int maxChildren;
     private int maxDepth;
 
-    public SpiderController() {
+    public Spider() {
         queue = new LinkedList<>();
         visited = new LinkedHashSet<>();
 
