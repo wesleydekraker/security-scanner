@@ -29,7 +29,9 @@ public class Spider extends Entity {
             throw new MalformedURLException();
         }
 
-        addToQueue(simpleUrl, 0);
+        if (isNewUrl(simpleUrl)) {
+            addToQueue(simpleUrl, 0);
+        }
     }
 
     public void start() {
@@ -43,11 +45,11 @@ public class Spider extends Entity {
             spiderTask.start(current.getUrl());
             visited.add(current.getUrl());
 
-            addAllToQueue(spiderTask.getFoundUrls(), current.getDepth() + 1);
+            addNewUrlsToQueue(spiderTask.getFoundUrls(), current.getDepth() + 1);
         }
     }
 
-    private void addAllToQueue(List<SimpleUrl> urls, int depth) {
+    private void addNewUrlsToQueue(List<SimpleUrl> urls, int depth) {
         int total = 0;
 
         for (SimpleUrl url : urls) {
@@ -55,21 +57,16 @@ public class Spider extends Entity {
                 break;
             }
 
-            boolean added = addToQueue(url, depth);
-            if (added) {
+            if (isNewUrl(url)) {
+                addToQueue(url, depth);
                 total++;
             }
         }
     }
 
-    private boolean addToQueue(SimpleUrl url, int depth) {
-        if (isNewUrl(url)) {
-            QueuedUrl newUrl = new QueuedUrl(url, depth);
-            queue.add(newUrl);
-            return true;
-        }
-
-        return false;
+    private void addToQueue(SimpleUrl url, int depth) {
+        QueuedUrl newUrl = new QueuedUrl(url, depth);
+        queue.add(newUrl);
     }
 
     private boolean isNewUrl(SimpleUrl url) {
