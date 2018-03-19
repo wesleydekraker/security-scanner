@@ -4,18 +4,34 @@ import nl.hu.asd.Service;
 import nl.hu.asd.httpclient.IHttpClient;
 
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public class SpiderService extends Service {
+    private static Map<String, Spider> spiders = new HashMap<>();
+
     private SpiderService() { }
 
-    public static Set<SimpleUrl> getUrls(
+    public static String generateId() {
+        return UUID.randomUUID().toString();
+    }
+
+    public static void startScan(
+            String id,
             String startUrl,
             int maxChildren,
             int maxDepth,
             IHttpClient httpClient
     ) throws MalformedURLException {
+        if (id.length() != 36) {
+            throw new IllegalArgumentException();
+        }
+
         Spider spider = new Spider();
+        spiders.put(id, spider);
+
         spider.setHttpClient(httpClient);
         spider.setMaxChildren(maxChildren);
         spider.setMaxDepth(maxDepth);
@@ -23,7 +39,10 @@ public class SpiderService extends Service {
         spider.addSeed(startUrl);
 
         spider.start();
-        return spider.getVisitedUrls();
+    }
+
+    public static Set<SimpleUrl> getVisitedUrls(String id) {
+        return spiders.get(id).getVisitedUrls();
     }
 
 }

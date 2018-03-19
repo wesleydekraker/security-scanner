@@ -13,13 +13,18 @@ import static org.junit.Assert.assertEquals;
 public class SpiderServiceTest
 {
     @Test
-    public void testGetUrls() throws MalformedURLException {
-        Set<SimpleUrl> urls = SpiderService.getUrls(
+    public void testService() throws MalformedURLException {
+        String id = SpiderService.generateId();
+
+        SpiderService.startScan(
+                id,
                 "http://example.com/index.html",
                 -1,
                 -1,
                 new HttpClientStub()
         );
+
+        Set<SimpleUrl> urls = SpiderService.getVisitedUrls(id);
 
         Set<SimpleUrl> expectedUrls = new HashSet<>(Arrays.asList(
                 new SimpleUrl("http://example.com/index.html"),
