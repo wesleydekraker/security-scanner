@@ -7,8 +7,9 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 public class Spider extends Entity {
-    private IHttpClient httpClient;
+    private SpiderId spiderId;
 
+    private IHttpClient httpClient;
     private Set<ISpiderListener> spiderListeners;
 
     private Queue<QueuedUrl> queue;
@@ -104,6 +105,14 @@ public class Spider extends Entity {
 
     public Set<SimpleUrl> getVisitedUrls() {
         return visited;
+    }
+
+    public SpiderId getSpiderId() {
+        return spiderId;
+    }
+
+    public void setSpiderId(SpiderId spiderId) {
+        this.spiderId = spiderId;
     }
 
     public void setHttpClient(IHttpClient httpClient) {

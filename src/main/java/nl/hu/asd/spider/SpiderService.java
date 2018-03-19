@@ -2,16 +2,14 @@ package nl.hu.asd.spider;
 
 import nl.hu.asd.Service;
 import nl.hu.asd.httpclient.IHttpClient;
+import nl.hu.asd.persistence.ISpiderRepository;
+import nl.hu.asd.persistence.SpiderRepository;
 
 import java.net.MalformedURLException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 public class SpiderService extends Service {
-    private static Map<String, Spider> spiders = new HashMap<>();
-
     private SpiderService() { }
 
     public static String generateId() {
@@ -25,13 +23,10 @@ public class SpiderService extends Service {
             int maxDepth,
             IHttpClient httpClient
     ) throws MalformedURLException {
-        if (id.length() != 36) {
-            throw new IllegalArgumentException();
-        }
 
         Spider spider = new Spider();
-        spiders.put(id, spider);
 
+        spider.setSpiderId(new SpiderId(id));
         spider.setHttpClient(httpClient);
         spider.setMaxChildren(maxChildren);
         spider.setMaxDepth(maxDepth);
@@ -39,10 +34,14 @@ public class SpiderService extends Service {
         spider.addSeed(startUrl);
 
         spider.startScan();
+
+        ISpiderRepository spiderRepository = new SpiderRepository();
+        spiderRepository.save(spider);
     }
 
     public static Set<SimpleUrl> getVisitedUrls(String id) {
-        return spiders.get(id).getVisitedUrls();
+        ISpiderRepository spiderRepository = new SpiderRepository();
+        return spiderRepository.get(new SpiderId(id)).getVisitedUrls();
     }
 
 }
