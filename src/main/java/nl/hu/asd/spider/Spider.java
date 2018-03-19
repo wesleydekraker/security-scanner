@@ -9,6 +9,8 @@ import java.util.*;
 public class Spider extends Entity {
     private IHttpClient httpClient;
 
+    private Set<ISpiderListener> spiderListeners;
+
     private Queue<QueuedUrl> queue;
     private Set<SimpleUrl> visited;
 
@@ -16,6 +18,8 @@ public class Spider extends Entity {
     private int maxDepth;
 
     public Spider() {
+        spiderListeners = new HashSet<>();
+
         queue = new LinkedList<>();
         visited = new LinkedHashSet<>();
 
@@ -43,7 +47,7 @@ public class Spider extends Entity {
 
             SpiderTask spiderTask = new SpiderTask(httpClient);
             spiderTask.start(current.getUrl());
-            visited.add(current.getUrl());
+            addVisitedUrl(current.getUrl());
 
             addNewUrlsToQueue(spiderTask.getFoundUrls(), current.getDepth() + 1);
         }
@@ -81,6 +85,21 @@ public class Spider extends Entity {
         }
 
         return true;
+    }
+
+    private void addVisitedUrl(SimpleUrl url) {
+        visited.add(url);
+        notifyListeners(url);
+    }
+
+    private void notifyListeners(SimpleUrl url) {
+        for (ISpiderListener spiderListener : spiderListeners) {
+            spiderListener.newUrlVisited(url);
+        }
+    }
+
+    public void addListener(ISpiderListener spiderListener) {
+        spiderListeners.add(spiderListener);
     }
 
     public Set<SimpleUrl> getVisitedUrls() {
