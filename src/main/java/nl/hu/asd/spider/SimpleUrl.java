@@ -30,7 +30,6 @@ public class SimpleUrl extends ValueObject {
         if (isAbsoluteUrl()) {
             setHost(strippedUrl);
             strippedUrl = stripHost(strippedUrl);
-
         }
 
         if (isAbsoluteUrl() && strippedUrl.isEmpty()) {
