@@ -12,7 +12,7 @@ public class SimpleUrlTest
 
         assertEquals(url.getProtocol(), "http");
         assertEquals(url.getHost(), "google.com");
-        assertEquals(url.getPath(), "");
+        assertEquals(url.getPath(), "/");
         assertEquals(url.isAbsoluteUrl(), true);
         assertEquals(url.isAbsolutePath(), true);
         assertEquals(url.toString(), "http://google.com/");
@@ -24,7 +24,7 @@ public class SimpleUrlTest
 
         assertEquals(url.getProtocol(), null);
         assertEquals(url.getHost(), "google.com");
-        assertEquals(url.getPath(), "");
+        assertEquals(url.getPath(), "/");
         assertEquals(url.isAbsoluteUrl(), true);
         assertEquals(url.isAbsolutePath(), true);
         assertEquals(url.toString(), "//google.com/");
@@ -36,7 +36,7 @@ public class SimpleUrlTest
 
         assertEquals(url.getProtocol(), null);
         assertEquals(url.getHost(), null);
-        assertEquals(url.getPath(), "index.html");
+        assertEquals(url.getPath(), "/index.html");
         assertEquals(url.isAbsoluteUrl(), false);
         assertEquals(url.isAbsolutePath(), true);
         assertEquals(url.toString(), "/index.html");
