@@ -15,7 +15,7 @@ public class SpiderTest
         spider.setHttpClient(new HttpClientStub());
 
         spider.addSeed("http://example.com/index.html");
-        spider.start();
+        spider.startScan();
         assertEquals(10, spider.getVisitedUrls().size());
     }
 
@@ -26,7 +26,7 @@ public class SpiderTest
         spider.setMaxDepth(4);
 
         spider.addSeed("http://example.com/index.html");
-        spider.start();
+        spider.startScan();
         assertEquals(9, spider.getVisitedUrls().size());
     }
 
@@ -37,7 +37,7 @@ public class SpiderTest
         spider.setMaxChildren(1);
 
         spider.addSeed("http://example.com/index.html");
-        spider.start();
+        spider.startScan();
         assertEquals(6, spider.getVisitedUrls().size());
     }
 }

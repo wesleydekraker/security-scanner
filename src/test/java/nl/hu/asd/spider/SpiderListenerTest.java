@@ -18,7 +18,7 @@ public class SpiderListenerTest
         spider.setHttpClient(new HttpClientStub());
 
         spider.addSeed("http://example.com/index.html");
-        spider.start();
+        spider.startScan();
         assertEquals(10, listener.getTotalVisitedUrls());
     }
 }

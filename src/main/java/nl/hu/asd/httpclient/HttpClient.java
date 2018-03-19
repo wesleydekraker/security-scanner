@@ -11,7 +11,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 public class HttpClient extends Service implements IHttpClient {
-    public SimpleHttpRes connect(String url) throws HttpClientException {
+    public SimpleHttpRes getResource(String url) throws HttpClientException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         CloseableHttpResponse response;

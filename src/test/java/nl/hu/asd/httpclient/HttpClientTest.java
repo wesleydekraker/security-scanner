@@ -10,7 +10,7 @@
 //    public void testGet() throws HttpClientException {
 //        HttpClient httpClient = new HttpClient();
 //
-//        SimpleHttpRes response = httpClient.connect("http://example.com/tokyo/map.html");
+//        SimpleHttpRes response = httpClient.getResource("http://example.com/tokyo/map.html");
 //
 //        assertEquals(200, response.getStatusCode());
 //        assertTrue(response.getBody().contains("Map of Tokyo"));

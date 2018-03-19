@@ -11,7 +11,7 @@ public class HttpClientStubTest
     public void testGet() throws HttpClientException {
         HttpClientStub httpClientStub = new HttpClientStub();
 
-        SimpleHttpRes response = httpClientStub.connect("http://example.com/tokyo/map.html");
+        SimpleHttpRes response = httpClientStub.getResource("http://example.com/tokyo/map.html");
         assertEquals(200, response.getStatusCode());
         assertTrue(response.getBody().contains("Map of Tokyo"));
     }

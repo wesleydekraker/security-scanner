@@ -19,7 +19,7 @@ public class SpiderHtmlParserTest
         SimpleUrl url = new SimpleUrl("http://example.com/index.html");
 
         IHttpClient httpClient = new HttpClientStub();
-        SimpleHttpRes response = httpClient.connect(url.toString());
+        SimpleHttpRes response = httpClient.getResource(url.toString());
 
         List<SimpleUrl> urls = SpiderHtmlParser.getUrls(url, response.getBody());
 

@@ -10,9 +10,9 @@ import java.net.URL;
 public class HttpClientStub extends Service implements IHttpClient {
     private String baseUrl = "http://example.com/";
 
-    public SimpleHttpRes connect(String url) throws HttpClientException {
+    public SimpleHttpRes getResource(String url) throws HttpClientException {
         if (!url.startsWith(baseUrl)) {
-            throw new HttpClientException("Expected URL to start with: " + baseUrl + ", actual input: " + url);
+            throw new HttpClientException("Expected URL to startScan with: " + baseUrl + ", actual input: " + url);
         }
 
         if (url.endsWith("/")) {

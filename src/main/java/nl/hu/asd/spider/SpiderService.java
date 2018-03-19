@@ -38,7 +38,7 @@ public class SpiderService extends Service {
         
         spider.addSeed(startUrl);
 
-        spider.start();
+        spider.startScan();
     }
 
     public static Set<SimpleUrl> getVisitedUrls(String id) {

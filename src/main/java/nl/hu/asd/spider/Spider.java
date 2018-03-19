@@ -38,7 +38,7 @@ public class Spider extends Entity {
         }
     }
 
-    public void start() {
+    public void startScan() {
         while (!queue.isEmpty()) {
             QueuedUrl current = queue.poll();
             if (maxDepth != -1 && current.getDepth() >= maxDepth) {
@@ -46,7 +46,7 @@ public class Spider extends Entity {
             }
 
             SpiderTask spiderTask = new SpiderTask(httpClient);
-            spiderTask.start(current.getUrl());
+            spiderTask.startPageScan(current.getUrl());
             addVisitedUrl(current.getUrl());
 
             addNewUrlsToQueue(spiderTask.getFoundUrls(), current.getDepth() + 1);

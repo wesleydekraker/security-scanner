@@ -16,10 +16,10 @@ public class SpiderTask extends Entity {
         this.httpClient = httpClient;
     }
 
-    public void start(SimpleUrl startUrl) {
+    public void startPageScan(SimpleUrl startUrl) {
         SimpleHttpRes response;
         try {
-            response = httpClient.connect(startUrl.toString());
+            response = httpClient.getResource(startUrl.toString());
         } catch (HttpClientException e) {
             e.printStackTrace();
             return;
