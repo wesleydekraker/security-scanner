@@ -7,6 +7,8 @@ import java.net.MalformedURLException;
 import java.util.Set;
 
 public class SpiderService extends Service {
+    private SpiderService() { }
+
     public static Set<SimpleUrl> getUrls(
             String startUrl,
             int maxChildren,

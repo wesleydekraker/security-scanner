@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpiderHtmlParser extends Service {
+    private SpiderHtmlParser() { }
+
     public static List<SimpleUrl> getUrls(SimpleUrl currentUrl, String messageBody) {
         List<SimpleUrl> urls = new ArrayList<>();
 
