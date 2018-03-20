@@ -5,7 +5,7 @@
   <artifactId>spider</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>spider</name>
+  <name>securityscanner</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
