@@ -7,7 +7,6 @@ import nl.hu.asd.persistence.ISpiderRepository;
 
 import java.net.MalformedURLException;
 import java.util.Set;
-import java.util.UUID;
 
 public class SpiderService extends Service {
     public static IFactory factory = new Factory();
@@ -15,7 +14,8 @@ public class SpiderService extends Service {
     private SpiderService() { }
 
     public static String generateId() {
-        return UUID.randomUUID().toString();
+        ISpiderRepository spiderRepository = factory.createSpiderRepository();
+        return spiderRepository.nextId().toString();
     }
 
     public static void startScan(

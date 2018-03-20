@@ -5,6 +5,7 @@ import nl.hu.asd.spider.SpiderId;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class SpiderRepository implements ISpiderRepository {
     private static Set<Spider> spiders = new HashSet<>();
@@ -16,6 +17,10 @@ public class SpiderRepository implements ISpiderRepository {
             }
         }
         return null;
+    }
+
+    public SpiderId nextId() {
+        return new SpiderId(UUID.randomUUID().toString());
     }
 
     public void remove(Spider spider) {
