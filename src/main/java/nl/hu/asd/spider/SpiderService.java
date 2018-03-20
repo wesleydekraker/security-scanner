@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.util.Set;
 
 public class SpiderService extends Service {
-    public static IFactory factory = new Factory();
+    private static IFactory factory = new Factory();
 
     private SpiderService() { }
 
