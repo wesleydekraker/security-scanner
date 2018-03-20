@@ -12,7 +12,10 @@ public class SpiderId extends ValueObject {
     }
 
     private void setId(String id) {
-        // additional checks
+        if (id.length() != 36) {
+            throw new IllegalArgumentException("SpiderId must be 36 characters long.");
+        }
+        
         this.id = id;
     }
 
