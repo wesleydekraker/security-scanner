@@ -1,6 +1,6 @@
 package nl.hu.asd.spider;
 
-import nl.hu.asd.httpclient.HttpClientStub;
+import nl.hu.asd.FactoryStub;
 import org.junit.Test;
 
 import java.net.MalformedURLException;
@@ -14,14 +14,16 @@ public class SpiderServiceTest
 {
     @Test
     public void testService() throws MalformedURLException {
+        // overwrites factory for testing purposes
+        SpiderService.setFactory(new FactoryStub());
+
         String id = SpiderService.generateId();
 
         SpiderService.startScan(
                 id,
                 "http://example.com/index.html",
                 -1,
-                -1,
-                new HttpClientStub()
+                -1
         );
 
         Set<SimpleUrl> urls = SpiderService.getVisitedUrls(id);

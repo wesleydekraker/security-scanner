@@ -1,15 +1,17 @@
 package nl.hu.asd.spider;
 
+import nl.hu.asd.Factory;
+import nl.hu.asd.IFactory;
 import nl.hu.asd.Service;
-import nl.hu.asd.httpclient.IHttpClient;
 import nl.hu.asd.persistence.ISpiderRepository;
-import nl.hu.asd.persistence.SpiderRepository;
 
 import java.net.MalformedURLException;
 import java.util.Set;
 import java.util.UUID;
 
 public class SpiderService extends Service {
+    public static IFactory factory = new Factory();
+
     private SpiderService() { }
 
     public static String generateId() {
@@ -20,14 +22,14 @@ public class SpiderService extends Service {
             String id,
             String startUrl,
             int maxChildren,
-            int maxDepth,
-            IHttpClient httpClient
+            int maxDepth
     ) throws MalformedURLException {
 
         Spider spider = new Spider();
 
+        spider.setHttpClient(factory.createHttpClient());
+
         spider.setSpiderId(new SpiderId(id));
-        spider.setHttpClient(httpClient);
         spider.setMaxChildren(maxChildren);
         spider.setMaxDepth(maxDepth);
         
@@ -35,13 +37,17 @@ public class SpiderService extends Service {
 
         spider.startScan();
 
-        ISpiderRepository spiderRepository = new SpiderRepository();
+        ISpiderRepository spiderRepository = factory.createSpiderRepository();
         spiderRepository.save(spider);
     }
 
     public static Set<SimpleUrl> getVisitedUrls(String id) {
-        ISpiderRepository spiderRepository = new SpiderRepository();
+        ISpiderRepository spiderRepository = factory.createSpiderRepository();
         return spiderRepository.get(new SpiderId(id)).getVisitedUrls();
+    }
+
+    public static void setFactory(IFactory factory) {
+        SpiderService.factory = factory;
     }
 
 }
